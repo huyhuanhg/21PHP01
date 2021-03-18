@@ -1,0 +1,33 @@
+Tạo repo trên github
+Tạo ssh-key của máy mình
+Tải git windows về máy và cài lên https://git-scm.com/download/win
+Sử dụng lệnh để tạo ssh-key
+Mở cmd lên, gõ lệnh  ssh-keygen và enter cho đến khi hoàn thành
+Kết nối máy mình vs tài khoản github thông qua ssh-key. Mở file ssh-key lên
+Vào thư mục C:\Users\<tên máy>\.ssh
+(Không thấy thư mục .ssh thì mở file ẩn của máy tính lên)
+Mở file id_rsa.pub lên bằng wordpad
+Copy nội dung file id_rsa.pub và dán vào bên github https://github.com/settings/keys
+(Chọn New SSH key để add vào)
+Làm việc với git
+Đầu tiên (duy nhất), clone repository về máy mình
+Vào thư mục mình cần lưu trữ code (Hiện tại đa số ở D:/21PHP01/)
+Click chuột phải chọn git bash here, sau đó gõ lệnh
+git clone git@github.com:appleluong1905/21php01_html.git
+(chỗ bôi đen là đường dẫn repo của mình)
+Nếu có hỏi yes/no thì gõ yes
+Xong
+Push code lên
+Copy bài của session1 hôm trước bỏ vào trong D:/21PHP01/\21php01_html
+Để push code lên gồm 3 bước (3 lệnh) như bên dưới
+Đứng ở thư mục 21php01_html, chọn git bash here, gõ:
+git add .
+git commit -m”nội dung đẩy code lên”
+(nội dung đẩy code lên là đoạnt text, muốn gõ gì cũng được, để người khác xem họ hiểu là được)
+git push origin master
+
+
+-
+Mấy bạn tìm đọc thêm tài liệu về convention code
+------
+
