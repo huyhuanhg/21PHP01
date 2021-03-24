@@ -1,0 +1,26 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Syne+Mono&display=swap');
+@font-face {
+    font-family: 'myFont';
+    src: url("css/font/AguafinaScript-Regular.ttf");
+}
+#header{
+    background-color: dodgerblue;
+}
+.logo{
+    color: red;
+    font-size: 30px;
+    /*font-family: 'Josefin Sans', sans-serif;*/
+    font-weight: 200;
+    font-family: 'myFont';
+}
+.title-box{
+    color: green;
+    font-size: 25px;
+    font-weight: 700;
+    font-family: 'Syne Mono', monospace;
+}
+.content-box{
+    font-size: 20px;
+    color: blue;
+}
