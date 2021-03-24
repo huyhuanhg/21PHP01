@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 5</title>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="row clear-fix">
+            <div class="col-tb-2-6 logo box">
+                logo
+            </div>
+            <div class="col-pc-4-6 banner box">
+                banner
+            </div>
+            <div class="nav open"><i class='bx bx-menu'></i></div>
+        </div>
+        <nav id="menu" class="box">
+            menu
+        </nav>
+        <div class="slider box">
+            slider
+        </div>
+        <div class="row clear-fix">
+            <div class="col-tb-1-2 news1 box">
+                news1
+            </div>
+            <div class="col-tb-1-2 news2 box">
+                news2
+            </div>
+        </div>
+        <div class="row clear-fix">
+            <div class="col-tb-1-2 col-pc-6-6 fotter1 box">
+                fotter1
+            </div>
+            <div class="col-tb-1-2 col-pc-6-6 fotter2 box">
+                fotter2
+            </div>
+        </div>
+    </div>
+<script>
+    // <i className='bx bx-x'></i>
+    var navElement = document.querySelector('.nav');
+    var iconNav = navElement.querySelector('i');
+    var menuElement = document.querySelector('nav');
+    console.log(menuElement);
+    navElement.onclick = (e) => {
+        iconNav.classList.toggle('bx-x');
+        iconNav.classList.toggle('bx-menu');
+        menuElement.classList.toggle('show');
+    }
+</script>
+</body>
+</html>
