@@ -9,9 +9,11 @@
     margin: 20px auto;
     border: 1px solid black;
 }
-.wrap>.row:first-child{
+
+.wrap > .row:first-child {
     position: relative;
 }
+
 .box {
     border: 1px solid black;
     display: flex;
@@ -35,7 +37,7 @@
     height: 70px;
 }
 
-.nav{
+.nav {
     position: fixed;
     font-size: 300%;
     font-weight: 900;
@@ -43,10 +45,20 @@
     right: 25px;
     cursor: pointer;
 }
+
+.logo {
+    position: fixed;
+    top: 21px;
+    left: 0;
+    background-color: white;
+}
+
 .logo, .fotter1, .fotter2 {
     height: 100px;
 }
-
+.slider{
+    margin-top: 100px;
+}
 .slider, .news1, .news2 {
     height: 250px;
 }
@@ -60,7 +72,8 @@
     display: block;
     clear: both;
 }
-nav.show{
+
+nav.show {
     display: flex;
     position: fixed;
     top: 120px;
@@ -70,6 +83,7 @@ nav.show{
     border-radius: 15px;
     background-color: #95d9ff;
 }
+
 /*//// grid*/
 @media screen and (min-width: 481px ) {
     .col-tb-2-2 {
@@ -79,11 +93,16 @@ nav.show{
     .col-tb-1-2 {
         width: 50%;
     }
-    nav.show{
+
+    nav.show {
         height: 300px;
     }
+
     .fotter2, .banner {
         display: flex;
+    }
+    .banner{
+        margin-top: 100px;
     }
     .slider {
         display: none;
@@ -106,22 +125,32 @@ nav.show{
     .col-pc-6-6 {
         width: 100%;
     }
-    .nav{
+
+    .nav {
         display: none;
     }
-    .slider, nav.box{
+    .logo{
+        position: unset;
+    }
+    .banner, .slider{
+        margin-top: 0;
+    }
+    .slider, nav.box {
         display: flex;
     }
-    nav.box{
+
+    nav.box {
         height: 50px;
     }
-    nav.show{
+
+    nav.show {
         position: relative;
         width: 100%;
         border-radius: 0;
         top: 0;
         background-color: unset;
     }
+
     .banner {
         height: 100px
     }
