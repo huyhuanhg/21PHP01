@@ -78,12 +78,41 @@ nav.show {
     position: fixed;
     top: 120px;
     right: 0;
-    width: 80%;
+    width: 50%;
     height: 500px;
     border-radius: 15px;
-    background-color: #95d9ff;
+    border: none;
 }
 
+nav.box ul{
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+nav.box ul li{
+    font-size: 80%;
+}
+nav.box ul li>a:hover{
+    background-color: white;
+    color: #1a265c;
+}
+
+nav.box ul li a{
+    text-decoration: none;
+    color: white;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 8px 20px;
+    margin-bottom: 10px;
+    background-color: #1a265c;
+    border-radius: 5px;
+    justify-content: center;
+    transition: .4s ease-in-out;
+    text-transform: none;
+    align-items: center;
+}
 /*//// grid*/
 @media screen and (min-width: 481px ) {
     .col-tb-2-2 {
@@ -95,7 +124,8 @@ nav.show {
     }
 
     nav.show {
-        height: 300px;
+        width: 200px;
+        height: fit-content;
     }
 
     .fotter2, .banner {
@@ -141,14 +171,22 @@ nav.show {
 
     nav.box {
         height: 50px;
+        border: none;
+    }
+    nav.show{
+        position: unset;
+        width: 100%;
+    }
+    nav.box ul li{
+        width: 16.666666%;
+        float: left;
+        height: 100%;
+        border: 1px solid #1a265c;
+        padding: 3px 3px;
     }
 
-    nav.show {
-        position: relative;
-        width: 100%;
-        border-radius: 0;
-        top: 0;
-        background-color: unset;
+    nav.box ul li a{
+        margin-bottom: 0;
     }
 
     .banner {
