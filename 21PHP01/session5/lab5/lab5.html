@@ -19,7 +19,14 @@
         <div class="nav"><i class='bx bx-menu'></i></div>
     </div>
     <nav class="box">
-        menu
+        <ul class="clear-fix">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Get Tickets</a></li>
+            <li><a href="#">Become a Member</a></li>
+            <li><a href="#">About Us</a></li>
+        </ul>
     </nav>
     <div class="slider box">
         slider
@@ -45,7 +52,6 @@
     var navElement = document.querySelector('.nav');
     var iconNav = navElement.querySelector('i');
     var menuElement = document.querySelector('nav');
-    console.log(menuElement);
     navElement.onclick = (e) => {
         iconNav.classList.toggle('bx-x');
         iconNav.classList.toggle('bx-menu');
