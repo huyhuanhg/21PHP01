@@ -1,0 +1,21 @@
+table{
+    border-collapse: collapse;
+    width: 1000px;
+    margin: 0 auto;
+    text-align: right;
+}
+td.left{
+    text-align: left;
+}
+td.center{
+    text-align: center;
+}
+thead{
+    background-color: #77e3fd;
+}
+tbody{
+    background-color: #89ff89;
+}
+tfoot{
+    background-color: #39e0ff;
+}

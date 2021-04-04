@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.wrap{
+    width: 50%;
+    margin: 50px 25%;
+}
+table {
+    width: 90%;
+    margin: 0 5%;
+    border-collapse: collapse;
+    text-align: center;
+}
+table, th, tr, td{
+    border: 1px solid black;
+}
+th, td{
+    padding: 8px 0;
+}
