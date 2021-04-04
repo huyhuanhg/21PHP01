@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product</title>
+    <script src="https://kit.fontawesome.com/efc0cf8ca8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/lab8-3.css">
+</head>
+<body>
+<div class="wrap">
+    <form id="add-product">
+        <div class="header">
+            <div class="index">
+                <a href="#">Quản lý hàng hóa</a> /<a class="here" href="#">  Thêm mới Hàng hóa</a>
+            </div>
+            <div class="control">
+                <button class="btn back"><i class="fas fa-arrow-left"></i><span>Quay lại</span></button>
+                <button class="btn save"><i class="fas fa-save"></i></i></i><span>Lưu & Thêm mới</span></button>
+            </div>
+        </div>
+        <div class="info">
+            <div class="header-box">Thông tin cơ bản</div>
+            <div class="content-box">
+                <div class="form-group">
+                    <div class="title-input">
+                        <label>Loại sản phẩm</label>
+                    </div>
+                    <div class="input-box">
+                        <select class="serial">
+                            <option value="0">Dịch vụ</option>
+                            <option value="0">Thời trang</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="title-input">
+                        <label>Mã dịch vụ (SKU)</label>
+                    </div>
+                    <div class="input-box relative">
+                        <input type="text" placeholder="Mã hàng hóa tự động">
+                        <i class="fas fa-info"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="title-input">
+                        <label>Mã vạch</label>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="serial" placeholder="Mã vạch sản phẩm">
+                        <i class="fas fa-info"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="title-input">
+                        <label>Tên dịch vụ <abbr name="Trường này bắt buộc">(*)</abbr></label>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="title-input">
+                        <label>Nhóm dịch vụ</label>
+                    </div>
+                    <div class="input-box group">
+                        <input type="text" list="list-product" placeholder="Chọn hoặc nhập tên nhóm hàng hóa">
+                        <i class="fas fa-plus"></i>
+                        <datalist id="list-product">
+                            <option>Nhóm 1</option>
+                            <option>Nhóm 2</option>
+                            <option>Nhóm 3</option>
+                        </datalist>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="title-input">
+                        <label>Giá bán <abbr name="Trường này bắt buộc">(*)</abbr></label>
+                    </div>
+                    <div class="input-box">
+                        <input type="number" class="price" value="0"/>
+                        <span>đ</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="title-input">
+                        <label>Quản lý theo Serial/IMEI</label>
+                    </div>
+                    <div class="input-box">
+                        <input type="checkbox">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="avatar">
+            <div class="header-box">Ảnh hàng hóa</div>
+            <div class="content-box">
+                <label class="btn custom-file-upload">
+                    <input type="file"/>
+                    <i class="fas fa-image"></i><span>Custom Upload</span>
+                </label>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
