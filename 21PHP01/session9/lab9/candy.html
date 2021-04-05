@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính số kẹo đổi được</title>
+    <style>
+        body {
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        input {
+            display: block;
+            width: 286px;
+            padding: 10px 80px 10px 10px;
+            margin: 20px 10px;
+        }
+
+        button {
+            width: 20%;
+            margin: 10px 40%;
+            cursor: pointer;
+        }
+
+        form div {
+            position: relative;
+        }
+
+        form div span {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+<!--Cho ban 2000 vnđ đi mua kẹo .Biết : 1 viên kẹo giá 200 vnđ. cứ 2 vỏ kẹo đổi được 1 viên. Hỏi với 2000 vnđ, ban sẽ mua đc bao nhiêu viên kẹo ?-->
+<form action="">
+    <div>
+        <input type="text" id="money" placeholder="Nhập số tiền bạn có"
+               onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+        <span>x 1000 VND</span>
+    </div>
+    <input type="text" id="price" placeholder="Nhập giá 1 viên kẹo"
+           onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+    <input type="text" id="change" placeholder="Nhập số vỏ kẹo để đổi được 1 viên kẹo"
+           onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+    <button id="submit">Tính</button>
+</form>
+<script src="./js/candy.js"></script>
+</body>
+</html>
