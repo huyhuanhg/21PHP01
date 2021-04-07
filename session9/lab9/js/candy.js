@@ -20,7 +20,7 @@ submitBox.onclick = (e) => {
         }
     }
     alert(`Với ${money} VND bạn đổi được ${candy} cái kẹo nhé!`);
-    
+
     // var candy = (change != '0' && change != '') ? (Math.floor(money / price) + Math.floor(Math.floor(money / price) / change)) :
     //     (Math.floor(money / price));
     // alert(`Với ${money} VND bạn đổi được ${candy} cái kẹo nhé!`);
