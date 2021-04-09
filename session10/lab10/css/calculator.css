@@ -1,0 +1,115 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-size: 20px;
+    background-image: linear-gradient( #fff, rgba(127, 250, 112,.5));
+    height: 100vh;
+    overflow: hidden;
+}
+.row{
+    padding: 10px;
+}
+.row::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.col-1-5{
+    float: left;
+    width: 20%;
+}
+.wrap{
+    width: 500px;
+    margin: 100px auto;
+}
+.calculator{
+    border: 3px solid #7b7bfd;
+    border-radius: 25px 25px 10px 10px;
+    padding: 20px 15px;
+    background-color: rgba(0,0,0,.5);
+    box-shadow: 3px 3px 50px 5px rgb(149, 149, 149);
+}
+.logo h1{
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+.logo h1 sup{
+    font-size: 70%;
+}
+.screen{
+    height: 100px;
+    border: 1px solid rgba(255,255,255,.7);
+    background-color: rgba(255,255,255,.7);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    font-size: 35px;
+    padding: 10px 10px;
+    overflow: hidden;
+    position: relative;
+    text-align: right;
+    /*display: flex;*/
+    /*justify-content: flex-end;*/
+    /*align-items: center;*/
+    transition: .3s ease-in-out;
+}
+.screen.error{
+    border-color: red;: ;
+    background-color: rgb(255, 223, 223);
+}
+.screen .expression{
+    width: fit-content;
+    position: absolute;
+    right: 0;
+    top: 30%;
+}
+.screen .parentheses{
+    color: green;
+}
+.screen .operator{
+    color: red;
+}
+button{
+    font-size: 180%;
+    width: 90%;
+    margin: 0 5%;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 8px 5%;
+    outline: none;
+    transition: .3s ease-in-out;
+}
+button:hover{
+    border-color: green;
+    background-color: #c1c1c1;
+}
+button.delete{
+    background-color: rgba(255, 85, 85, 0.5);
+    color: white;
+}
+button.delete:hover{
+    background-color: rgba(255, 62, 62, 0.5);
+}
+button.operator{
+    background-color: #e9ffda;
+}
+button.operator:hover{
+    background-color: #d1ffb3;
+}
+button#equal{
+    background-color: #8787ff;
+    color: white;
+    font-weight: 900;
+}
+
+button#equal:hover{
+    background-color: #3737ff;
+}
+#power{
+    position: fixed;
+    top: 50%;
+    left: 10%;
+}
