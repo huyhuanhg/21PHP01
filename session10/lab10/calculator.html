@@ -11,10 +11,17 @@
         <div class="logo">
             <h1>CASIO<sup>&copy;</sup></h1>
         </div>
-        <div class="screen error">
+        <div class="screen off">
             <div class="expression">
-                0
+
             </div>
+            <div id="equal-box">
+
+            </div>
+            <div id="msg">
+                Hello!
+            </div>
+            <div class="error-icon">E</div>
         </div>
         <div class="key-group">
             <div class="row">
@@ -82,15 +89,19 @@
                     <button class="parentheses" id="closing-parentheses">)</button>
                 </div>
                 <div class="col-1-5">
-                    <button id="equal">=</button>
+                    <button id="equal-btn">=</button>
                 </div>
             </div>
         </div>
         <div id="power">
-            <button id="on">ON</button>
-            <button id="off">OFF</button>
+            <div class="button-box">
+                <div id="btn"></div>
+                <button id="on" onclick="onClick()" class="toggle-btn"><span>ON</span></button>
+                <button id="off" onclick="offClick()" class="toggle-btn"><span>OFF</span></button>
+            </div>
         </div>
     </div>
+</div>
 </div>
 <script src="./js/calculator.js"></script>
 </body>

@@ -1,14 +1,53 @@
 let screenElement = document.querySelector('.screen');
 let expressionElement = document.querySelector('.screen .expression');
+let equalBox = document.getElementById('equal-box');
+let selectBtn = document.getElementById('btn');
+onClick = () => {
+    if (screenElement.classList.contains('off')) {
+        let msgBox = document.getElementById('msg');
+        selectBtn.style.top = '0';
+
+        screenElement.className = 'screen';
+        msgBox.innerText = 'Hello!';
+        screenElement.classList.add('hello');
+        setTimeout(function () {
+            screenElement.classList.add('on');
+            screenElement.classList.remove('hello');
+            expressionElement.innerText = '0';
+            equalBox.innerText = '';
+        }, 500)
+    }
+}
+offClick = () => {
+    if (!screenElement.classList.contains('off')) {
+        let msgBox = document.getElementById('msg');
+
+        selectBtn.style.top = '75px';
+
+        screenElement.className = 'screen';
+        msgBox.innerText = 'Goodbye!';
+        screenElement.classList.add('bye');
+        setTimeout(function () {
+            screenElement.classList.remove('bye');
+            screenElement.classList.add('off');
+        }, 500)
+    }
+}
+
 
 let btnAC = document.getElementById('reset');
 btnAC.onclick = (e) => {
-    screenElement.className = 'screen';
-    expressionElement.innerText = '0';
+    if (screenElement.classList.contains('on')) {
+        screenElement.className = 'screen on';
+        expressionElement.innerText = '0';
+        equalBox.innerText = '';
+    }
 }
 
 let backspaceBtn = document.getElementById('backspace');
 backspaceBtn.onclick = (e) => {
+    if (screenElement.classList.contains('success')) screenElement.classList.remove('success');
+    if (screenElement.classList.contains('error')) screenElement.classList.remove('error');
     if (expressionElement.innerText) {
         if (expressionElement.innerText.length == 1)
             expressionElement.innerText = 0;
@@ -18,17 +57,21 @@ backspaceBtn.onclick = (e) => {
             expressionElement.innerHTML = innerText;
         }
     }
-
 }
 
 let numberBtn = document.querySelectorAll('button.number');
 numberBtn.forEach((btn) => {
     btn.onclick = (e) => {
-        if (expressionElement.innerText == '0')
+        if (screenElement.classList.contains('success') || screenElement.classList.contains('error')) {
+            screenElement.className = 'screen on';
             expressionElement.innerText = e.target.innerText;
-        else {
-            if (!(expressionElement.innerText[expressionElement.innerText.length - 1] == ')')) {
-                expressionElement.innerHTML += e.target.innerText;
+        } else {
+            if (expressionElement.innerText == '0')
+                expressionElement.innerText = e.target.innerText;
+            else {
+                if (!(expressionElement.innerText[expressionElement.innerText.length - 1] == ')')) {
+                    expressionElement.innerHTML += e.target.innerText;
+                }
             }
         }
     }
@@ -41,40 +84,46 @@ operatorBtn.forEach((btn) => {
         // trường hợp 2: kí tự cuối là dấu phép toán
         let key = e.target.innerText;
         let lastE = expressionElement.innerText[expressionElement.innerText.length - 1];
-        if (expressionElement.innerText == '0') {
-            if (key == '-') {
-                expressionElement.innerHTML = `<span class="operator">${key}</span>`;
-            }
-        } else if (lastE == '.') {
-            expressionElement.innerHTML = expressionElement.innerHTML
-        } else if ((/\+|x|÷|-|\(/).test(lastE)) {
-            if (key == '-') {
-                if (lastE == '-') {
-                    let index = expressionElement.innerHTML.lastIndexOf(key);
-                    if (expressionElement.innerText[expressionElement.innerText.length - 2] != '(')
-                        expressionElement.innerHTML = setCharAt(expressionElement.innerHTML, index, '+')
-                    else expressionElement.innerHTML = setCharAt(expressionElement.innerHTML, index, '')
-                } else {
-                    if (lastE != '.') {
-                        if (lastE == '(') {
-                            expressionElement.innerHTML += `<span class="operator">${key}</span>`;
-                        } else {
-                            let index = expressionElement.innerHTML.lastIndexOf(lastE);
-                            expressionElement.innerHTML = setCharAt(expressionElement.innerHTML, index, '-')
+        if (screenElement.classList.contains('error')) screenElement.classList.remove('error');
+        if (screenElement.classList.contains('success')) {
+            screenElement.classList.remove('success');
+            expressionElement.innerText = equalBox.innerText + key;
+        } else {
+            if (expressionElement.innerText == '0') {
+                if (key == '-') {
+                    expressionElement.innerHTML = `<span class="operator">${key}</span>`;
+                }
+            } else if (lastE == '.') {
+                expressionElement.innerHTML = expressionElement.innerHTML
+            } else if ((/\+|x|÷|-|\(/).test(lastE)) {
+                if (key == '-') {
+                    if (lastE == '-') {
+                        let index = expressionElement.innerHTML.lastIndexOf(key);
+                        if (expressionElement.innerText[expressionElement.innerText.length - 2] != '(')
+                            expressionElement.innerHTML = setCharAt(expressionElement.innerHTML, index, '+')
+                        else expressionElement.innerHTML = setCharAt(expressionElement.innerHTML, index, '')
+                    } else {
+                        if (lastE != '.') {
+                            if (lastE == '(') {
+                                expressionElement.innerHTML += `<span class="operator">${key}</span>`;
+                            } else {
+                                let index = expressionElement.innerHTML.lastIndexOf(lastE);
+                                expressionElement.innerHTML = setCharAt(expressionElement.innerHTML, index, '-')
+                            }
                         }
                     }
-                }
-            } else if (lastE == '(') {
-                if (key == '-') {
-                    expressionElement.innerHTML += `<span class="operator">${key}</span>`;
+                } else if (lastE == '(') {
+                    if (key == '-') {
+                        expressionElement.innerHTML += `<span class="operator">${key}</span>`;
+                    }
+                } else {
+                    let index = expressionElement.innerHTML.lastIndexOf(lastE);
+                    if (expressionElement.innerText[expressionElement.innerText.length - 2] != '(')
+                        expressionElement.innerHTML = setCharAt(expressionElement.innerHTML, index, key)
                 }
             } else {
-                let index = expressionElement.innerHTML.lastIndexOf(lastE);
-                if (expressionElement.innerText[expressionElement.innerText.length - 2] != '(')
-                    expressionElement.innerHTML = setCharAt(expressionElement.innerHTML, index, key)
+                expressionElement.innerHTML += `<span class="operator">${key}</span>`;
             }
-        } else {
-            expressionElement.innerHTML += `<span class="operator">${key}</span>`;
         }
     }
 })
@@ -83,15 +132,22 @@ parenthesesBtn.forEach((btn) => {
     btn.onclick = (e) => {
         let key = e.target.innerText;
         let lastE = expressionElement.innerText[expressionElement.innerText.length - 1];
-        if (key == '(') {
-            if ((!Number(lastE) && expressionElement.innerText != '0') && lastE != '.' && lastE != ')') {
-                expressionElement.innerHTML += `<span class="parentheses">${key}</span>`;
+        if (screenElement.classList.contains('success') || screenElement.classList.contains('error')) {
+            if (key === '(') {
+                screenElement.className = 'screen on';
+                expressionElement.innerText = key;
             }
         } else {
-            let openPth = countOpenPth(expressionElement.innerText);
-            if (openPth) {
-                if (typeof Number(lastE) === 'number' && expressionElement.innerText != '0') {
+            if (key == '(') {
+                if ((!Number(lastE) && expressionElement.innerText != '0') && lastE != '.' && lastE != ')') {
                     expressionElement.innerHTML += `<span class="parentheses">${key}</span>`;
+                }
+            } else {
+                let openPth = countOpenPth(expressionElement.innerText);
+                if (openPth) {
+                    if (typeof Number(lastE) === 'number' && expressionElement.innerText != '0') {
+                        expressionElement.innerHTML += `<span class="parentheses">${key}</span>`;
+                    }
                 }
             }
         }
@@ -101,19 +157,28 @@ parenthesesBtn.forEach((btn) => {
 let decimalPointBtn = document.getElementById('decimal-point');
 decimalPointBtn.onclick = (e) => {
     let lastE = expressionElement.innerText[expressionElement.innerText.length - 1];
-    if ((/\+|x|÷|-|\(/).test(lastE)) {
-        expressionElement.innerHTML += `0.`;
+    if (screenElement.classList.contains('success') || screenElement.classList.contains('error')) {
+        screenElement.className = 'screen on';
+        expressionElement.innerText = '0.';
+
     } else {
-        let existDP = checkExistDP(expressionElement.innerText);
-        if (existDP) {
-            expressionElement.innerHTML += `.`;
+        if ((/\+|x|÷|-|\(/).test(lastE)) {
+            expressionElement.innerHTML += `0.`;
+        } else {
+            let existDP = checkExistDP(expressionElement.innerText);
+            if (existDP) {
+                expressionElement.innerHTML += `.`;
+            }
         }
     }
 }
 
-let equalBtn = document.getElementById('equal');
+
+let equalBtn = document.getElementById('equal-btn');
 equalBtn.onclick = () => {
-    let expression = addClosingPth(expressionElement.innerText)
+    let expression = deleteResidual(expressionElement.innerText);
+    expressionElement.innerHTML = replaceSymbol(expression);
+    expression = addClosingPth(expression)
     expression = setOperator(expression);
     while (existParentheses(expression)) {
         let indexParentheses = getOpenAndClosePth(expression);
@@ -125,7 +190,13 @@ equalBtn.onclick = () => {
     if (!Number(expression) && Number(expression) != 0) {
         expression = calculate(expression);
     }
-    console.log(expression);
+    if (expression) {
+        expression = Number(expression);
+        equalBox.innerText = expression;
+        screenElement.classList.add('success')
+    } else {
+        screenElement.classList.add('error');
+    }
 }
 
 
@@ -157,6 +228,15 @@ function replaceSymbol(str) {
     str = str.replaceAll(')', '<span class="parentheses">)</span>')
     return str;
 }
+
+function deleteResidual(str) {
+    let reg = /\+|-|x|÷|\.|\(/;
+    while (reg.test(str[str.length - 1])) {
+        str = str.substring(0, str.length - 1);
+    }
+    return str;
+}
+
 
 function setOperator(str) {
     str = str.replaceAll('÷', '/')
