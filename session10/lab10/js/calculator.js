@@ -404,6 +404,7 @@ function multiplication(str) {
     return str;
 }
 
+
 /**
  * phép cộng và trừ
  */
@@ -414,11 +415,26 @@ function plusAndMinus(str) {
         let childExpression = numbers.before + numbers.operator + numbers.after;
         str = str.replace(childExpression, '$');
         if (numbers.operator === '+') {
-            childExpression = Number(Number(numbers.before) + Number(numbers.after));
+            childExpression = String(Number(Number(numbers.before) + Number(numbers.after)));
         } else {
-            childExpression = Number(Number(numbers.before) - Number(numbers.after));
+            childExpression = String(Number(Number(numbers.before) - Number(numbers.after)));
         }
+        let lengthDecimalNum1 = numbers.before.split('.')[1] === undefined ? 0 : numbers.before.split('.')[1].length;
+        let lengthDecimalNum2 = numbers.after.split('.')[1] === undefined ? 0 : numbers.after.split('.')[1].length;
+        let maxAfterDecimal = lengthDecimalNum1 > lengthDecimalNum2 ? lengthDecimalNum1 : lengthDecimalNum2;
+
+        if (maxAfterDecimal) {
+            let lengthDecimalNumEqual = childExpression.split('.')[1] === undefined ? 0 : childExpression.split('.')[1].length;
+            if (lengthDecimalNumEqual > maxAfterDecimal) {
+                let x = childExpression.split('.')[1].slice(0, maxAfterDecimal);
+                let y = childExpression.split('.')[1].slice(maxAfterDecimal, childExpression.split('.')[1].length)
+                childExpression = childExpression.split('.')[0] + '.' + Math.round(Number(x + '.' + y))
+            }
+        }
+
         str = str.replace('$', childExpression);
     }
+
+
     return str;
 }
