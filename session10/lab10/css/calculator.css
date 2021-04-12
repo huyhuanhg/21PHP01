@@ -37,6 +37,7 @@ body {
     padding: 20px 15px;
     background-color: rgba(0, 0, 0, .5);
     box-shadow: 3px 3px 50px 5px rgb(149, 149, 149);
+    position: relative;
 }
 
 .logo h1 {
@@ -182,9 +183,9 @@ button#equal:hover {
 }
 
 #power {
-    position: fixed;
+    position: absolute;
     top: 25%;
-    right: 33%;
+    right: -10%;
     font-size: 30%;
 }
 
