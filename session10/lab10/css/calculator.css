@@ -71,10 +71,10 @@ body {
 
 .screen.on .expression, .screen.on #equal-box {
     display: block;
-    width: fit-content;
     position: absolute;
     font-size: 100%;
     right: 5px;
+    white-space: nowrap;
 }
 
 .screen.on .expression {

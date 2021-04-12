@@ -97,7 +97,7 @@ operatorBtn.forEach((btn) => {
             if (screenElement.classList.contains('error')) screenElement.classList.remove('error');
             if (screenElement.classList.contains('success')) {
                 screenElement.classList.remove('success');
-                expressionElement.innerText = equalBox.innerText + key;
+                expressionElement.innerHTML = equalBox.innerText + `<span class="operator">${key}</span>`;
             } else {
                 if (expressionElement.innerText == '0') {
                     if (key == '-') {
