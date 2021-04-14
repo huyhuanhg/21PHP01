@@ -18,9 +18,13 @@ var btnAnswer = document.querySelectorAll('.btn-answer');
 btnAnswer.forEach(function (btn) {
     btn.onclick = (e) => {
         e.preventDefault();
+        var regex = /^\d+$/;
         let param = e.target.parentElement.querySelector('.param').value;
+        let str = 'Chỉ được nhập số lớn hơn 1 và tối đa 100';
         let functionName = e.target.getAttribute('function')
-        let str = functionQuestion[functionName](param);
+        if (regex.test(param) && Number(param) >= 2 && Number(param) <= 100) {
+            str = functionQuestion[functionName](param);
+        }
         ansewrBox.innerText = str;
     }
 });
@@ -53,9 +57,13 @@ totalChar.onchange = () => {
 var btnQuestion4 = document.getElementById('question4');
 btnQuestion4.onclick = (e) => {
     e.preventDefault();
+    var regex = /^\d+$/;
+    let str = 'Chuỗi nhập vào không hợp lệ!';
     let param = e.target.parentElement.querySelector('.param').value;
     let sortType = document.getElementById('type-sort').value;
-    let str = functionQuestion.question4(param, sortType);
+    if (regex.test(param)){
+        str = functionQuestion.question4(param, sortType);
+    }
     ansewrBox.innerText = str;
 }
 
