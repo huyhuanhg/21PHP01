@@ -1,0 +1,72 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-size: 25px;
+}
+.wrap{
+    width: 1000px;
+    margin: 0 auto;
+}
+#form-validate{
+    padding: 40px 160px;
+    box-shadow: 5px 5px 50px 5px rgba(167, 167, 167, 0.3), -5px 5px 50px 5px rgba(149, 149, 149, 0.3);
+}
+#form-validate h1{
+    margin-bottom: 30px;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 20px;
+}
+label{
+    font-size: 120%;
+}
+.form-group input, .form-group textarea{
+    padding: 20px 30px;
+    font-size: 100%;
+    background-color: rgba(0,0,0,.1);
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,.4);
+    margin-top: 30px;
+    transition: .3s ease-in-out;
+}
+.form-group input:hover, .form-group textarea:hover,
+.form-group input:focus, .form-group textarea:focus{
+    border-color: blue;
+}
+.btn{
+    border: 1px blue solid;
+    background-color: blue;
+    padding: 20px 40px;
+    color: white;
+    font-weight: 900;
+    cursor: pointer;
+    outline: none;
+    font-size: 100%;
+    border-radius: 8px;
+    transition: .3s ease-in-out;
+}
+.btn:hover{
+    background-color: white;
+    color: blue;
+}
+.form-group.success input,.form-group.success textarea{
+    background-color: #f1fff1;
+    border-color: #56fc58;
+}
+.form-group.error input,.form-group.error textarea{
+    background-color: #fff1f1;
+    border-color: #fc5656;
+}
+.form-group.error .error.msg{
+    color: red;
+    font-size: 70%;
+    position: absolute;
+    top: 40px;
+}
