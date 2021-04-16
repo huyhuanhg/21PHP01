@@ -4,19 +4,20 @@ var students = [
     ['Huy Hoang', 25, 'huyhoang@gmail.com', 'Nghe An'],
     ['Pham Hai', 26, 'phamhai@gmail.com', 'Thanh Hoa'],
 ];
-
-document.write('<h3>Danh sách sinh viên ban đầu</h3>')
-for (let i = 0; i < students.length; i++) {
-    document.write(i + 1 + '. ');
-    for (let j = 0; j < students[i].length; j++) {
-        if (j === students[i].length - 1) {
-            document.write(students[i][j] + '<br/>');
-        } else {
-            document.write(students[i][j] + ' - ');
+var show = function (array) {
+    for (let i = 0; i < array.length; i++) {
+        document.write(i + 1 + '. ');
+        for (let j = 0; j < array[i].length; j++) {
+            if (j === students[i].length - 1) {
+                document.write(array[i][j] + '<br/>');
+            } else {
+                document.write(array[i][j] + ' - ');
+            }
         }
     }
 }
-
+document.write('<h3>Danh sách sinh viên ban đầu</h3>')
+show(students);
 
 document.write('<h3>Danh sách sinh viên sau khi thêm</h3>')
 var newStudents = [
@@ -46,17 +47,7 @@ for (let i = 0; i < students.length; i++) {
     }
 }
 
-for (let i = 0; i < students.length; i++) {
-    document.write(i + 1 + '. ');
-    for (let j = 0; j < students[i].length; j++) {
-        if (j === students[i].length - 1) {
-            document.write(students[i][j] + '<br/>');
-        } else {
-            document.write(students[i][j] + ' - ');
-        }
-    }
-}
-
+show(students)
 document.write('<h3>Danh sách sinh viên sau khi đổi quê quán</h3>')
 /**
  * Sửa các phần tử được in đậm thành bình thường
@@ -75,16 +66,7 @@ for (let i = 0; i < students.length; i++) {
         updateIndex.push([i, 3])
     }
 }
-for (let i = 0; i < students.length; i++) {
-    document.write(i + 1 + '. ');
-    for (let j = 0; j < students[i].length; j++) {
-        if (j === students[i].length - 1) {
-            document.write(students[i][j] + '<br/>');
-        } else {
-            document.write(students[i][j] + ' - ');
-        }
-    }
-}
+show(students)
 
 document.write('<h3>Danh sách sinh viên sau khi đuổi các thành phần trẻ trâu</h3>')
 /**
@@ -100,13 +82,4 @@ for (let i = students.length - 1; i >= 0; i--) {
         students.splice(i, 1);
     }
 }
-for (let i = 0; i < students.length; i++) {
-    document.write(i + 1 + '. ');
-    for (let j = 0; j < students[i].length; j++) {
-        if (j === students[i].length - 1) {
-            document.write(students[i][j] + '<br/>');
-        } else {
-            document.write(students[i][j] + ' - ');
-        }
-    }
-}
+show(students)
