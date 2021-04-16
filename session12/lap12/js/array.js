@@ -16,6 +16,12 @@ var show = function (array) {
         }
     }
 }
+var resetBold = function (param) {
+    param.forEach((e) => {
+        students[e[0]][e[1]] = students[e[0]][e[1]].replace('<b>', '')
+        students[e[0]][e[1]] = students[e[0]][e[1]].replace('</b>', '')
+    })
+}
 document.write('<h3>Danh sách sinh viên ban đầu</h3>')
 show(students);
 
@@ -52,10 +58,7 @@ document.write('<h3>Danh sách sinh viên sau khi đổi quê quán</h3>')
 /**
  * Sửa các phần tử được in đậm thành bình thường
  */
-updateIndex.forEach((e) => {
-    students[e[0]][e[1]] = students[e[0]][e[1]].replace('<b>', '')
-    students[e[0]][e[1]] = students[e[0]][e[1]].replace('</b>', '')
-})
+resetBold(updateIndex);
 
 updateIndex = [];
 for (let i = 0; i < students.length; i++) {
@@ -72,10 +75,7 @@ document.write('<h3>Danh sách sinh viên sau khi đuổi các thành phần tr�
 /**
  * Sửa các phần tử được in đậm thành bình thường
  */
-updateIndex.forEach((e) => {
-    students[e[0]][e[1]] = students[e[0]][e[1]].replace('<b>', '')
-    students[e[0]][e[1]] = students[e[0]][e[1]].replace('</b>', '')
-})
+resetBold(updateIndex);
 for (let i = students.length - 1; i >= 0; i--) {
     let age = students[i][1];
     if (age >= 23 && age <= 26) {
