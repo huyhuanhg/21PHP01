@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Electric Bill</title>
+    <link rel="shortcut icon" href="./imgs/favico.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="js/Validator/Validator.js"></script>
+    <script src="js/Electric.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <form id="electric-form">
+        <h3>Tính tiền điện</h3>
+        <div class="form-group">
+            <label class="form-label">Họ và Tên</label>
+            <input id="fullname" class="text-box" type="text" placeholder="Nhập tên đầy đủ" name="fullname">
+        </div>
+        <div class="form-group birth-group">
+            <label class="form-label">Ngày sinh:</label>
+            <select class="birth-item" name="birth-day" id="birth-day">
+                <option value="" disabled hidden selected>Ngày</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+            </select>
+            <select class="birth-item" name="birth-month" id="birth-month">
+                <option value="" disabled hidden selected>Tháng</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            <select class="birth-item" name="birth-year" id="birth-year">
+                <option value="" disabled hidden selected>Năm</option>
+            </select>
+        </div>
+        <div class="form-group group-gender">
+            <label class="form-label">Giới tính:</label>
+            <label class="gender-item"><input id="male" name="gender" type="radio" value="1" checked>Nam</label>
+            <label class="gender-item"><input id="female" name="gender" type="radio" value="0">Nữ</label>
+        </div>
+        <div class="row">
+            <div class="col-1-2">
+                <div class="form-group left">
+                    <label class="form-label">Số đầu kỳ</label>
+                    <input class="text-box" type="text" placeholder="Nhập số đầu kỳ" name="number-start"
+                           id="number-start">
+                </div>
+            </div>
+            <div class="col-1-2">
+                <div class="form-group right">
+                    <label class="form-label">Số cuối kỳ</label>
+                    <input class="text-box" type="text" placeholder="Nhập cuối kỳ" name="number-end" id="number-end">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1-2">
+                <div class="form-group left">
+                    <label class="form-label">Ngày đầu kỳ</label>
+                    <input id="date-start" class="date-box" type="date" name="date-start">
+                </div>
+            </div>
+            <div class="col-1-2">
+                <div class="form-group date-end right">
+                    <label class="form-label">Ngày cuối kỳ </label>
+                    <input id="date-end" class="date-box" type="date" name="date-end">
+                </div>
+            </div>
+        </div>
+        <button class="btn">Xuất hóa đơn</button>
+    </form>
+</div>
+<script src="js/electric-bill.js"></script>
+</body>
+</html>
