@@ -4,6 +4,9 @@ const price = {
     big: 3500
 };
 
+const STRING_OF_NUMBER = new Array(" không ", " một ", " hai ", " ba ", " bốn ", " năm ", " sáu ", " bảy ", " tám ", " chín ");
+const MONEY = new Array("", " nghìn", " triệu", " tỷ", " nghìn tỷ", " triệu tỷ");
+
 class Electric {
     fullname;
     birthday;
@@ -15,7 +18,7 @@ class Electric {
 
     constructor(infoObject) {
         this.fullname = infoObject.fullname;
-        this.setBirthday(infoObject['birth-day'],infoObject['birth-year'], infoObject['birth-month'] )
+        this.setBirthday(infoObject['birth-day'], infoObject['birth-year'], infoObject['birth-month'])
         this.gender = infoObject.gender === '1' ? 'male' : 'female';
         this.electicNumberStart = infoObject['number-start'];
         this.electicNumberEnd = infoObject['number-end'];
@@ -36,7 +39,11 @@ class Electric {
         let dateInfo = date.split('-');
         return `${dateInfo[2]}/${dateInfo[1]}/${dateInfo[0]}`;
     }
-
+    formatMoney(number) {
+        return number.toFixed(0).replace(/./g, function(c, i, a) {
+            return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+        });
+    }
     getElectricNumberTotal() {
         return this.electicNumberEnd - this.electicNumberStart;
     }
@@ -66,6 +73,111 @@ class Electric {
     getTotalMoney() {
         let numberElectricOfLevel = this.getNumberElecticByLevel(this.getElectricNumberTotal());
         return numberElectricOfLevel.small * price.small + numberElectricOfLevel.medium * price.medium + numberElectricOfLevel.big * price.big;
+    }
+
+    //1. Hàm đọc số có ba chữ số;
+    readerNumberlength3(length3) {
+        let hundred;
+        let ten;
+        let unit;
+        let result = "";
+        hundred = parseInt(length3 / 100);
+        ten = parseInt((length3 % 100) / 10);
+        unit = length3 % 10;
+        if (hundred == 0 && ten == 0 && unit == 0) return "";
+        if (hundred != 0) {
+            result += STRING_OF_NUMBER[hundred] + " trăm ";
+            if ((ten == 0) && (unit != 0)) result += " linh ";
+        }
+        if ((ten != 0) && (ten != 1)) {
+            result += STRING_OF_NUMBER[ten] + " mươi";
+            if ((ten == 0) && (unit != 0)) result = result + " linh ";
+        }
+        if (ten == 1) result += " mười ";
+        switch (unit) {
+            case 1:
+                if ((ten != 0) && (ten != 1)) {
+                    result += " mốt ";
+                } else {
+                    result += STRING_OF_NUMBER[unit];
+                }
+                break;
+            case 5:
+                if (ten == 0) {
+                    result += STRING_OF_NUMBER[unit];
+                } else {
+                    result += " lăm ";
+                }
+                break;
+            default:
+                if (unit != 0) {
+                    result += STRING_OF_NUMBER[unit];
+                }
+                break;
+        }
+        return result;
+    }
+
+    convertMoneyToString(money) {
+        let lan = 0;
+        let i = 0;
+        let number = 0;
+        let result = "";
+        let tmp = "";
+        let position = new Array();
+        if (money < 0) return "Số tiền âm !";
+        if (money == 0) return "Không đồng !";
+        if (money > 0) {
+            number = money;
+        } else {
+            number = -money;
+        }
+        if (money > 8999999999999999) {
+            //money = 0;
+            return "Số quá lớn!";
+        }
+        position[5] = Math.floor(number / 1000000000000000);
+        if (isNaN(position[5]))
+            position[5] = "0";
+        number = number - parseFloat(position[5].toString()) * 1000000000000000;
+        position[4] = Math.floor(number / 1000000000000);
+        if (isNaN(position[4]))
+            position[4] = "0";
+        number = number - parseFloat(position[4].toString()) * 1000000000000;
+        position[3] = Math.floor(number / 1000000000);
+        if (isNaN(position[3]))
+            position[3] = "0";
+        number = number - parseFloat(position[3].toString()) * 1000000000;
+        position[2] = parseInt(number / 1000000);
+        if (isNaN(position[2]))
+            position[2] = "0";
+        position[1] = parseInt((number % 1000000) / 1000);
+        if (isNaN(position[1]))
+            position[1] = "0";
+        position[0] = parseInt(number % 1000);
+        if (isNaN(position[0]))
+            position[0] = "0";
+        if (position[5] > 0) {
+            lan = 5;
+        } else if (position[4] > 0) {
+            lan = 4;
+        } else if (position[3] > 0) {
+            lan = 3;
+        } else if (position[2] > 0) {
+            lan = 2;
+        } else if (position[1] > 0) {
+            lan = 1;
+        } else {
+            lan = 0;
+        }
+        for (i = lan; i >= 0; i--) {
+            tmp = this.readerNumberlength3(position[i]);
+            result += tmp;
+            if (position[i] > 0) result += MONEY[i];
+            if ((i > 0) && (tmp.length > 0)) result += ' ';//&& (!string.IsNullOrEmpty(tmp))
+        }
+        result = result.substring(1, 2).toUpperCase() + result.substring(2);
+        return result;
     }
 
     createBillElement() {
@@ -126,8 +238,8 @@ class Electric {
                             <td class="no-border"></td>
                             <td class="no-border"></td>
                             <td class="no-border text-right">${numberElectricOfLevel.small}</td>
-                            <td class="no-border text-right">${price.small}</td>
-                            <td class="no-border text-right">${numberElectricOfLevel.small * price.small}</td>
+                            <td class="no-border text-right">${this.formatMoney(price.small)}</td>
+                            <td class="no-border text-right">${this.formatMoney(numberElectricOfLevel.small * price.small)}</td>
                         </tr>
                         <tr class="no-border">
                             <td class="no-border"></td>
@@ -136,8 +248,8 @@ class Electric {
                             <td class="no-border"></td>
                             <td class="no-border"></td>
                             <td class="no-border text-right">${numberElectricOfLevel.medium}</td>
-                            <td class="no-border text-right">${price.medium}</td>
-                            <td class="no-border text-right">${numberElectricOfLevel.medium * price.medium}</td>
+                            <td class="no-border text-right">${this.formatMoney(price.medium)}</td>
+                            <td class="no-border text-right">${this.formatMoney(numberElectricOfLevel.medium * price.medium)}</td>
                         </tr>
                         <tr class="no-border">
                             <td class="no-border"></td>
@@ -146,8 +258,8 @@ class Electric {
                             <td class="no-border"></td>
                             <td class="no-border"></td>
                             <td class="no-border text-right">${numberElectricOfLevel.big}</td>
-                            <td class="no-border text-right">${price.big}</td>
-                            <td class="no-border text-right">${numberElectricOfLevel.big * price.big}</td>
+                            <td class="no-border text-right">${this.formatMoney(price.big)}</td>
+                            <td class="no-border text-right">${this.formatMoney(numberElectricOfLevel.big * price.big)}</td>
                         </tr>
                         </tbody>
                         <tfoot>
@@ -155,11 +267,11 @@ class Electric {
                             <td colspan="5" class="text-left bold">Tổng cộng:</td>
                             <td class="text-right bold">${this.getElectricNumberTotal()}</td>
                             <td></td>
-                            <td class="text-right bold">${this.getTotalMoney()}</td>
+                            <td class="text-right bold red">${this.formatMoney(this.getTotalMoney())} VNĐ</td>
                         </tr>
                         <tr>
                             <td colspan="8" class="x-large"><span class="bold">Số tiền viết bằng chữ: </span><span class="italic dodgerblue">
-                            Hàm này chưa được xây dựng</span> </td>
+                            ${this.convertMoneyToString(this.getTotalMoney())} đồng</span> </td>
                         </tr>
                         </tfoot>
                     </table>
