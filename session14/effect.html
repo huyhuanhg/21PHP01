@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            width: 600px;
+            margin: 200px auto;
+        }
+        h1{
+            color: red;
+            font-size: 250%;
+            transition: 2s all;
+        }
+        div:hover h1{
+            transform: skew(-15deg);
+            color: green;
+            font-size: 300%;
+        }
+    #item1, #item2{
+        overflow: hidden;
+        height: 0;
+        transition: 2s ease-in-out;
+    }
+    a:target{
+        height: 100px;
+    }
+    </style>
+</head>
+<body>
+<div>
+    <h1>Hoàng Huy Huấn</h1>
+</div>
+<a href="#item1">Box 1</a>
+<a href="#item2">Box 2</a>
+
+<div id="item1">hahahahaha</div>
+<div id="item2">hahahahaha</div>
+</body>
+</html>
