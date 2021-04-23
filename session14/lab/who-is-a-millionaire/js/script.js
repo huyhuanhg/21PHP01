@@ -49,8 +49,8 @@ var answerA = document.getElementById('answer_A');
 var answerB = document.getElementById('answer_B');
 var answerC = document.getElementById('answer_C');
 var answerD = document.getElementById('answer_D');
+var audioBox = document.getElementById('playAudio');
 var i = 0;
-
 function createQuestion() {
     question.innerText = questions[i].question;
     answerA.innerText = 'A. ' + questions[i].answerA;
@@ -60,7 +60,6 @@ function createQuestion() {
     setTimeout(() => {
         questionBox.classList.add('active');
     }, 1000)
-
 }
 
 function reset(btn, msgBox) {
@@ -74,6 +73,8 @@ function reset(btn, msgBox) {
 
 startBtn.onclick = () => {
     wrapBox.classList.add('start');
+    audioBox.querySelector('source').setAttribute('src', 'media/start.ogg');
+    audioBox.load();
     createQuestion();
 }
 var answerItems = document.querySelectorAll('#answer-group li>p');
@@ -88,8 +89,17 @@ answerItems.forEach((item) => {
         effectErrorBox.classList.add('error');
         effectSuccessBox.classList.add('success');
         if (data === questions[i].answerRight) {
+
+
             e.target.parentElement.append(effectSuccessBox);
             i++;
+            if (i === 5) {
+                audioBox.querySelector('source').setAttribute('src', 'media/win.ogg');
+                audioBox.load();
+            } else {
+                audioBox.querySelector('source').setAttribute('src', 'media/true.ogg');
+                audioBox.load();
+            }
             setTimeout(() => {
                 questionBox.classList.remove('active');
             }, 1200);
@@ -109,7 +119,9 @@ answerItems.forEach((item) => {
                 }, 1400);
             }
         } else {
-            e.target.parentElement.append(effectErrorBox)
+            e.target.parentElement.append(effectErrorBox);
+            audioBox.querySelector('source').setAttribute('src', 'media/false.ogg');
+            audioBox.load();
             document.getElementById('answer_' + questions[i].answerRight).parentElement.append(effectSuccessBox);
             setTimeout(() => {
                 questionBox.classList.remove('active');
