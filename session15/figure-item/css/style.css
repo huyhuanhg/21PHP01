@@ -2,6 +2,9 @@ body{
     background-color: #0088CC;
     padding: 2em 200px;
 }
+.row{
+    padding: 0 .525em;
+}
 .row::after{
     content: '';
     display: block;
@@ -11,13 +14,13 @@ body{
     float: left;
 }
 .col-1-3{
-    width: 33.333333%;
+    width: 470px;
 }
 figure{
     width: 90%;
-    margin: 0 5%;
+    margin: 0 5% 2em;
     position: relative;
-    height: 350px;
+    height: 330px;
     overflow: hidden;
     color: white;
 }
@@ -26,7 +29,7 @@ figure img{
 }
 figcaption{
     position: absolute;
-    bottom: -40%;
+    bottom: -45%;
     width: 96%;
     margin: 0 7%;
     transition: .5s ease;
