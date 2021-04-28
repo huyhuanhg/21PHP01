@@ -1,0 +1,83 @@
+body{
+    background-color: #0088CC;
+    padding: 2em 200px;
+}
+.row::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+[class^=col-]{
+    float: left;
+}
+.col-1-3{
+    width: 33.333333%;
+}
+figure{
+    width: 90%;
+    margin: 0 5%;
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+    color: white;
+}
+figure img{
+    width: 100%;
+}
+figcaption{
+    position: absolute;
+    bottom: -40%;
+    width: 96%;
+    margin: 0 7%;
+    transition: .5s ease;
+}
+figure>span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: .5s ease;
+    background-image: linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2));
+    opacity: 0;
+}
+figure:hover>span{
+    opacity: 1;
+}
+figure:hover figcaption{
+    bottom: 5px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.category{
+    display: block;
+    margin-bottom: .5em;
+    background-color: red;
+    width: fit-content;
+    padding: .25em .5em;
+    text-transform: uppercase;
+    border-radius: 5px;
+    text-shadow: 3px 2px 3px black;
+}
+.title{
+    font-size: 120%;
+    text-shadow: 3px 2px 3px black;
+
+}
+.gia-khuyen-mai span{
+    background-color: orange;
+    color: red;
+    padding: 2px 5px;
+}
+button{
+    cursor: pointer;
+    padding: .75em 1.2em;
+    outline: none;
+    border-radius: 5px;
+}
+button i{
+    margin-left: .5em;
+}
