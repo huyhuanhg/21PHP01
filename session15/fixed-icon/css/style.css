@@ -1,0 +1,97 @@
+:root {
+    --fb: #3b5998;
+    --email: #fd5707;
+    --phone: #ec3237;
+}
+
+.bg-fb {
+    background-color: var(--fb);
+}
+
+.bg-email {
+    background-color: var(--email);
+}
+
+.bg-phone {
+    background-color: var(--phone);
+}
+
+#nav_icon {
+    list-style: none;
+    position: fixed;
+    top: 50%;
+    right: 1em;
+    transform: translateY(-50%);
+}
+
+#nav_icon li {
+    margin-bottom: .5em;
+}
+
+#nav_icon a {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 150%;
+    color: white;
+    text-decoration: none;
+}
+
+#nav_icon a span {
+    line-height: 50px;
+    font-size: 16px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 50px;
+    padding-right: 30px;
+    border-radius: 30px;
+    opacity: 0;
+    width: 0;
+    transition: all 0.5s ease;
+    white-space: nowrap;
+}
+
+#nav_icon a:hover > span {
+    width: 200px;
+    opacity: 1;
+}
+
+#nav_icon img {
+    width: 100%;
+    height: 100%;
+}
+
+#nav_icon a:hover > i {
+    animation: effect_icon 2s infinite;
+}
+
+@keyframes effect_icon {
+    0% {
+    }
+    15% {
+        transform: scale(.9);
+    }
+    30% {
+        transform: scale(1);
+    }
+    40% {
+        transform: rotate(-5deg);
+    }
+    55% {
+        transform: rotate(5deg);
+    }
+    70% {
+        transform: rotate(-5deg);
+    }
+    85% {
+        transform: rotate(5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
